@@ -28,3 +28,14 @@ where countrycode = 'JPN';
 
 select name, sum(population) over (partition by name order by 1) from city
 where countrycode = 'JPN';
+
+/*Query the difference between the maximum and minimum populations in CITY.*/
+
+select max(population)-min(population) from city;
+
+/*Samantha was tasked with calculating the average monthly salaries for all employees in the EMPLOYEES table, 
+but did not realize her keyboard's  key was broken until after completing the calculation. 
+She wants your help finding the difference between her miscalculation (using salaries with any zeros removed), and the actual average salary*/
+
+SELECT CEIL(AVG(salary)-AVG(REPLACE(salary,'0','')))
+FROM employees;
